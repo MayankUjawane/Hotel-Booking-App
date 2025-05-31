@@ -75,13 +75,6 @@
   --chart-5: hsl(27 87% 67%);
 }
 
-* {
-  @apply border-border outline-ring/50;
-}
-body {
-  @apply bg-background text-foreground font-sans;
-}
-
 .container {
   @apply max-w-max-width mx-auto p-padding;
 }
@@ -91,5 +84,20 @@ body {
   scrollbar-color: transparent transparent;
   &:hover {
     scrollbar-color: var(--primary) var(--brand-color);
+  }
+}
+
+button,
+a,
+[role='button'] {
+  @apply select-none cursor-pointer;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground font-sans;
   }
 }

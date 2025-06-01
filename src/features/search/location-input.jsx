@@ -1,4 +1,3 @@
-import { Button } from '@/components/ui/button';
 import { FormControl, FormField } from '@/components/ui/form';
 import Icon from '@/components/ui/icon';
 import { Input } from '@/components/ui/input';
@@ -8,11 +7,17 @@ import {
   PopoverTrigger,
 } from '@/components/ui/popover';
 import { DESTINATIONS } from '@/config/app.config';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 const LocationInput = ({ form }) => {
   const watchCity = form.watch('city');
   const [isPopOverOpen, setIsPopOverOpen] = useState();
+  const [selectedIndex, setSelectedIndex] = useState(-1);
+
+  useEffect(() => {
+    if (selectedIndex >= 0)
+      form.setValue('city', DESTINATIONS[selectedIndex]?.city);
+  }, [selectedIndex]);
 
   function citySelectHandler(e, index) {
     e.preventDefault();
@@ -21,10 +26,32 @@ const LocationInput = ({ form }) => {
     setIsPopOverOpen(false);
   }
 
+  function handleKeyDown(e) {
+    if (!isPopOverOpen) {
+      setIsPopOverOpen(true);
+    }
+    switch (e.key) {
+      case 'ArrowUp':
+        if (selectedIndex > 0) {
+          setSelectedIndex((prev) => prev - 1);
+        }
+        break;
+      case 'ArrowDown':
+        if (selectedIndex < DESTINATIONS.length) {
+          setSelectedIndex((prev) => prev + 1);
+        }
+        break;
+      case 'Enter':
+        citySelectHandler(e, selectedIndex);
+        break;
+    }
+    console.log(selectedIndex);
+  }
+
   return (
     <Popover open={isPopOverOpen} onOpenChange={setIsPopOverOpen}>
-      <PopoverTrigger>
-        <div className="flex gap-2 items-center px-4 py-2 rounded bg-background lg:min-w-[360px]">
+      <PopoverTrigger asChild>
+        <div className="flex gap-2 items-center px-4 py-2 rounded bg-background lg:min-w-[360px] h-full">
           <Icon
             icon="bed"
             size="24"
@@ -37,11 +64,13 @@ const LocationInput = ({ form }) => {
             render={({ field }) => (
               <FormControl>
                 <Input
-                  type="email"
+                  type="text"
                   {...field}
                   className="w-full h-full px-2 text-sm border-0 focus-visible:ring-transparent focus-visible:ring-offset-transparent placeholder:font-normal placeholder:text-foreground focus:placeholder-muted-foreground"
                   placeholder="Where are you going?"
                   {...field}
+                  autoComplete="off"
+                  onKeyDown={handleKeyDown}
                 />
               </FormControl>
             )}
@@ -54,6 +83,7 @@ const LocationInput = ({ form }) => {
             className={watchCity ? '' : 'opacity-0 pointer-events-none'}
             onClick={(e) => {
               e.preventDefault();
+              setSelectedIndex(-1);
               form.setValue('city', '');
             }}
             aria-label="clear the selected city button"
@@ -79,7 +109,8 @@ const LocationInput = ({ form }) => {
           {DESTINATIONS.map((destination, index) => (
             <div
               key={index}
-              className="flex items-center gap-3 px-3 py-2 hover:bg-accent cursor-pointer transition-colors duration-200 border-b border-border"
+              className={`flex items-center gap-3 px-3 py-2 cursor-pointer transition-colors duration-200 border-b border-border
+                ${selectedIndex == index ? 'bg-accent' : 'hover:bg-accent'}`}
               onClick={(e) => citySelectHandler(e, index)}
             >
               <Icon icon="location" />

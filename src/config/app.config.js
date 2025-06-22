@@ -26,6 +26,10 @@ export const SERVICE_LIST = [
     icon: 'taxi',
   },
 ];
+export const HOTEL_TIMINGS = {
+  CHECKIN: '12:00 PM',
+  CHECKOUT: '11:00 AM',
+};
 
 export const TRENDING_DESTINATIONS = [
   {
@@ -112,6 +116,7 @@ export const FOOTER_SECTION = [
   },
 ];
 
+
 export const SOCIAL_LINKS = [
   { icon: 'pinterest', href: '#', title: 'Pinterest' },
   { icon: 'twitter', href: '#', title: 'Twitter' },
@@ -131,3 +136,111 @@ export const DESTINATIONS = [
   { city: 'Chennai', country: 'India' },
   { city: 'Pune', country: 'India' }
 ];
+
+export const SEARCH_RESULT_PAGE_LIMIT = 2;
+
+export const SEARCH_PARAMS_KEYS = {
+  CHECKIN: 'startDate',
+  CHECKOUT: 'endDate',
+  ROOMS: 'roomsCount',
+  LOCATION: 'city',
+  SELECTED_ROOM: 'selected_rcid',
+  SORTBY: 'sort',
+  PAGE: 'page',
+  STAR_CATEGORY: 'star-category',
+  PRICE_RANGE: 'price-range',
+  NEXT_REDIRECT: 'next',
+};
+
+export const SEARCH_FILTER_LABEL_KEY = {
+  popularity: 'Our top picks',
+  'price-asc': 'Price (lowest first)',
+  'price-desc': 'Price (highest first)',
+};
+export const SEARCH_FILTERS = [
+  {
+    label: 'Our top picks',
+    value: 'popularity',
+  },
+  {
+    label: 'Price (lowest first)',
+    value: 'price-asc',
+  },
+  {
+    label: 'Price (highest first)',
+    value: 'price-desc',
+  },
+];
+export const STAR_FILTERS = [
+  {
+    id: 1,
+    label: '5 Star',
+    value: 5,
+  },
+  {
+    id: 2,
+    label: '4 Star',
+    value: 4,
+  },
+  {
+    id: 3,
+    label: '3 Star',
+    value: 3,
+  },
+  {
+    id: 4,
+    label: '2 Star',
+    value: 2,
+  },
+  {
+    id: 5,
+    label: '1 Star',
+    value: 1,
+  },
+];
+export const PRICE_FILTERS = [
+  {
+    id: 1,
+    label: '₹0 - ₹500',
+    value: '0-500',
+  },
+  {
+    id: 2,
+    label: '₹500 - ₹1000',
+    value: '500-1000',
+  },
+  {
+    id: 3,
+    label: '₹1000 - ₹1500',
+    value: '1000-1500',
+  },
+  {
+    id: 4,
+    label: '₹1500 - ₹2000',
+    value: '1500-2000',
+  },
+  {
+    id: 5,
+    label: '₹2000 - ₹2500',
+    value: '2000-2500',
+  },
+];
+export const ERROR_FALLBACK = {
+  TITLE: 'Internal Server Error',
+  DESCRIPTION: 'Something went wrong. Please try again later.',
+};
+export const bookingStatusVariant = {
+  CONFIRMED: {
+    className: 'border-green-600 bg-green-100 text-green-600',
+    text: 'Completed',
+  },
+  CANCELLED: {
+    className: 'border-red-600 bg-red-100 text-red-600',
+    text: 'Cancelled',
+  },
+  PAYMENTS_PENDING: {
+    className: 'border-amber-600 bg-amber-100 text-amber-600',
+    text: 'Pending',
+  },
+};
+

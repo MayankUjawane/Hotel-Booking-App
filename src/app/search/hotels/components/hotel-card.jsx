@@ -1,6 +1,7 @@
 import Icon from '@/components/ui/icon';
 import React from 'react';
 import { Link } from 'react-router';
+import useHotelNavigation from '../hooks/use-hotel-navigation';
 
 const hotelInfo = {
   description:
@@ -58,6 +59,8 @@ const HotelImages = ({ photos }) => {
 };
 
 const HotelCard = ({ name, photos, city, id, amenities, price }) => {
+  const navigationUrl = useHotelNavigation(id);
+  
   return (
     <Link className="inline-block" to={navigationUrl}>
       <article className="flex w-full transition-colors border rounded-lg hover:border-primary">

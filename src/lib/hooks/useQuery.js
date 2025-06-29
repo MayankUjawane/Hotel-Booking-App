@@ -37,7 +37,7 @@ export default function useQuery({ url, options = {} }) {
 
   useEffect(() => {
     fetchData();
-  }, [url]);
+  }, [url, JSON.stringify(options)]);
 
   return { refetchQuery: fetchData, ...queryState };
 }

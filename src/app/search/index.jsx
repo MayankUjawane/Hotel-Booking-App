@@ -4,6 +4,7 @@ import Hotels from './hotels';
 import PaginationFilter from './filter/components/pagination-filter';
 import Filter from './filter';
 import useGetHotels from './hotels/hooks/use-get-hotels';
+import { SEARCH_RESULT_PAGE_LIMIT } from '@/config/app.config';
 
 function SearchPage() {
   const { data, isLoading, error, city } = useGetHotels();
@@ -22,7 +23,10 @@ function SearchPage() {
           <SortFilter />
         </div>
         <Hotels error={error} isLoading={isLoading} data={hotels} />
-        {hotels.length > 0 && <PaginationFilter />}
+        <PaginationFilter
+          totalEntries={hotelCounts}
+          limit={SEARCH_RESULT_PAGE_LIMIT}
+        />
       </section>
     </div>
   );

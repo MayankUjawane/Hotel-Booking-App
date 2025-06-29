@@ -39,5 +39,5 @@ export default function useQuery({ url, options = {} }) {
     fetchData();
   }, [url]);
 
-  return { ...queryState };
+  return { refetchQuery: fetchData, ...queryState };
 }

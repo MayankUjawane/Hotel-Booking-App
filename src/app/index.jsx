@@ -1,23 +1,14 @@
 import React from 'react';
-import Home from './home';
-import Header from '@/components/layouts/header.layout';
-import Footer from '@/components/layouts/footer.layout';
-import HotelDetails from './hotel-details';
-import AuthPage from './auth/signin';
-import { SignInPage, SignUpPage } from './auth';
-import SearchPage from './search';
+import Router from './router';
+import { Toaster } from '@/components/ui/sonner';
+import AuthContextProvider from '@/lib/providers/auth-context-provider';
 
 const App = () => {
   return (
-    <div>
-      <Header />
-      {/* <Home /> */}
-      {/* <HotelDetails /> */}
-      {/* <SignInPage /> */}
-      {/* <SignUpPage /> */}
-      <SearchPage />
-      <Footer />
-    </div>
+    <AuthContextProvider>
+      <Router />
+      <Toaster position="top-center" richColors />
+    </AuthContextProvider>
   );
 };
 

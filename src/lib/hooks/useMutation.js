@@ -1,7 +1,8 @@
+import { useState } from 'react';
 import { default as axiosInstance } from '../axios-instance';
 
-function useMutation(url, method) {
-  const [mutateState, setMutateState] = React.useState({
+export function useMutation(url, method) {
+  const [mutateState, setMutateState] = useState({
     data: null,
     pending: false,
     error: null,

@@ -45,7 +45,6 @@ const LocationInput = ({ form }) => {
         citySelectHandler(e, selectedIndex);
         break;
     }
-    console.log(selectedIndex);
   }
 
   return (

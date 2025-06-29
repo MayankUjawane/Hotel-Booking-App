@@ -1,13 +1,15 @@
-import React from 'react'
+import React from 'react';
 import HotelCardSkeleton from './components/hotel-card-skeleton';
+import HotelCard from './components/hotel-card';
 
-function Hotels({isLoading, data, error}) {
-  if(isLoading) return (
-    <div className="space-y-4">
-      <HotelCardSkeleton />
-      <HotelCardSkeleton />
-    </div>
-  );
+function Hotels({ isLoading, data, error }) {
+  if (isLoading)
+    return (
+      <div className="space-y-4">
+        <HotelCardSkeleton />
+        <HotelCardSkeleton />
+      </div>
+    );
 
   return (
     <div className="space-y-4">
@@ -18,4 +20,4 @@ function Hotels({isLoading, data, error}) {
   );
 }
 
-export default Hotels
+export default Hotels;

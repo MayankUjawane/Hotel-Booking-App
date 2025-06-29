@@ -55,7 +55,7 @@ const DateSelectInput = ({ form }) => {
                 selected={field.value}
                 numberOfMonths={2}
                 fromMonth={new Date()}
-                disable={(date) => dayjs().isAfter(dayjs(date), 'date')}
+                disabled={(date) => dayjs().isAfter(dayjs(date), 'date')}
                 onSelect={(value) => {
                   field.onChange(value);
                 }}
